@@ -861,7 +861,6 @@ module.exports = {
                         chatUpdate,
                     }
                     try {
-                      //  console.log(m)
                         await plugin.call(this, m, extra)
                         if (!isPrems) m.limit = m.limit || plugin.limit || false
                     } catch (e) {
@@ -1082,7 +1081,7 @@ global.dfail = (type, m, conn) => {
     private: `🚩 𝐒𝐨𝐫𝐫𝐲, *𝐏𝐑𝐈𝐕𝐀𝐓𝐄 𝐂𝐇𝐀𝐓* • 𝐂𝐎𝐌𝐌𝐀𝐍𝐃 𝐈𝐍𝐈 𝐇𝐀𝐍𝐘𝐀 𝐁𝐈𝐒𝐀 𝐃𝐈𝐏𝐀𝐊𝐀𝐈 𝐃𝐈 𝐏𝐑𝐈𝐕𝐀𝐓𝐄 𝐂𝐇𝐀𝐓!`,
     admin: `🚩 𝐒𝐨𝐫𝐫𝐲, *𝐎𝐍𝐋𝐘 𝐀𝐃𝐌𝐈𝐍* • 𝐂𝐎𝐌𝐌𝐀𝐍𝐃 𝐈𝐍𝐈 𝐇𝐀𝐍𝐘𝐀 𝐔𝐍𝐓𝐔𝐊 𝐀𝐃𝐌𝐈𝐍 𝐆𝐑𝐎𝐔𝐏!`,
     botAdmin: `🚩𝐒𝐨𝐫𝐫𝐲, *𝐎𝐍𝐋𝐘 𝐁𝐎𝐓 𝐀𝐃𝐌𝐈𝐍* • 𝐂𝐎𝐌𝐌𝐀𝐍𝐃 𝐈𝐍𝐈 𝐇𝐀𝐍𝐘𝐀 𝐁𝐈𝐒𝐀 𝐃𝐈𝐆𝐔𝐍𝐀𝐊𝐀𝐍 𝐊𝐄𝐓𝐈𝐊𝐀 𝐁𝐎𝐓 𝐌𝐄𝐍𝐉𝐀𝐃𝐈 𝐀𝐃𝐌𝐈𝐍!`,
-        unreg: `*「 🚩 𝐃𝐀𝐅𝐓𝐀𝐑 」*\n\n📝 Silahkan daftar ke database terlebih dahulu untuk menggunakan bot ini lebih lanjut. Gunakan perintah berikut:\n\n👉 .daftar namaAnda.umur\n👤 Contoh: .daftar Amir.22\n\n`,
+        unreg: `*「 🚩 𝐃𝐀𝐅𝐓𝐀𝐑 」*\n\n📝 Silahkan daftar ke database terlebih dahulu untuk menggunakan bot ini lebih lanjut. Gunakan perintah berikut:\n\n👉 .daftar namaAnda.umur\n👤 Contoh: .daftar IjulTaka.22\n\n`,
         restrict: '🚩 Fitur ini di *disable*!'
     }[type]
     if (msg) return conn.sendMessage(m.chat, {
@@ -1101,6 +1100,7 @@ renderLargerThumbnail: true
 tutup(conn)
 buka(conn)
 datashalat()
+backup(conn)
 cleartmp(conn)
 const fs = require('fs');
 let chalk = require('chalk')
