@@ -4,27 +4,28 @@ let fs = require('fs')
 let handler = async (m, { conn, usedPrefix, command, text }) => {
 let q = m.quoted ? m.quoted : m
 let mime = (q.msg || q).mimetype || ''
-if (!mime) throw 'Kirim/Reply Gambar dengan caption .remini'
+if (!mime) throw 'Kirim/Reply Gambar dengan caption .cekumur'
 m.reply(wait)
 let media = await q.download()
 let url = await fileIO(media)
-let res = await fetch(`${neNdikz}api/remini?image=${url}&apikey=${neoapi}`)
+let res = await fetch(`${neNdikz}api/age?image=${url}&apikey=${neoapi}`)
   let vas = await res.json()
   let v = vas.data
   
-  let cap = `${htki}  *REMINI V1* ${htka}
+  let cap = `${htki}  *CEK UMUR* ${htka}
   
-▢ *DONE REMINI?*
+▢ *UMUR* : ${v.age}
+▢ *GENDER* : ${v.gender}
 ${dmenuf}
 `
     
-conn.sendFile(m.chat, v.url, null, cap, m)
+await m.reply(cap)
 //conn.sendFile(m.chat, hasil, '', wm, m)
 	
 }
-handler.help = ['remini']
+handler.help = ['cekumur (foto)']
 handler.tags = ['maker']
-handler.command = /^(remini|hd|hdr|upscale)$/i
+handler.command = /^(cekumur|tebakumur)$/i
 handler.limit = true
 
 module.exports = handler

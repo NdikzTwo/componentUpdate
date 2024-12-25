@@ -8,13 +8,13 @@ if (!mime) throw 'Kirim/Reply Gambar dengan caption .remini'
 m.reply(wait)
 let media = await q.download()
 let url = await fileIO(media)
-let res = await fetch(`${neNdikz}api/remini?image=${url}&apikey=${neoapi}`)
+let res = await fetch(`${neNdikz}api/tozombie?image=${url}&apikey=${neoapi}`)
   let vas = await res.json()
   let v = vas.data
   
-  let cap = `${htki}  *REMINI V1* ${htka}
+  let cap = `${htki}  *ZOMBIE V1* ${htka}
   
-▢ *DONE REMINI?*
+▢ *DONE ZOMBIE?*
 ${dmenuf}
 `
     
@@ -22,9 +22,9 @@ conn.sendFile(m.chat, v.url, null, cap, m)
 //conn.sendFile(m.chat, hasil, '', wm, m)
 	
 }
-handler.help = ['remini']
+handler.help = ['jadizombie']
 handler.tags = ['maker']
-handler.command = /^(remini|hd|hdr|upscale)$/i
+handler.command = /^(tozombie|jadizombie)$/i
 handler.limit = true
 
 module.exports = handler

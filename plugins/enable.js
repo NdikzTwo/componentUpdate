@@ -15,12 +15,14 @@ ${dmenub2} antilink
 ${dmenub2} antilinknokick
 ${dmenub2} antidelete
 ${dmenub2} antiporn
+${dmenub2} antiviewonce
 ${dmenub2} antifoto
 ${dmenub2} antitoxic
 ${dmenub2} antisticker
 ${dmenub2} autosticker
 ${dmenub2} autolevelup
 ${dmenub2} detect
+${dmenub2} captcha
 ${dmenub2} simi
 ${dmenub2} document
 ${dmenub2} whitelistmycontacts
@@ -35,7 +37,6 @@ Contoh:
 ${usedPrefix}enable welcome
 ${usedPrefix}disable welcome
 `
-  /*  
     let sections = [
 { title: `${htki} 𝙿𝙴𝙽𝙶𝙰𝚃𝚄𝚁𝙰𝙽 𝙱𝙾𝚃 ${htka}`,
 rows: [
@@ -112,7 +113,7 @@ let msg = generateWAMessageFromContent(m.chat, {
         })
     }
   }
-}, {}) */
+}, {})
     
   let isEnable = /true|enable|(turn)?on|1/i.test(command)
   let chat = global.db.data.chats[m.chat]
@@ -183,6 +184,15 @@ let msg = generateWAMessageFromContent(m.chat, {
         throw false
       }
       global.opts['self'] = !isEnable
+      break
+      case 'captcha':
+      if (m.isGroup) {
+        if (!(isAdmin || isOwner)) {
+          global.dfail('admin', m, conn)
+          throw false
+        }
+      }
+      chat.captcha = isEnable
       break
     case 'antilink':
       if (m.isGroup) {
@@ -255,6 +265,15 @@ let msg = generateWAMessageFromContent(m.chat, {
         }
       }
       chat.antiToxic = isEnable
+      break
+      case 'antiviewonce':
+      if (m.isGroup) {
+        if (!(isAdmin || isOwner)) {
+          global.dfail('admin', m, conn)
+          throw false
+        }
+      }
+      chat.viewonce = isEnable
       break
     case 'autolevelup':
       isUser = true
@@ -376,10 +395,10 @@ case 'chatbot':
       chat.antiSpam = isEnable
       break
     default:
-     /* if (!/[01]/.test(command)) return await conn.relayMessage(msg.key.remoteJid, msg.message, {
+      if (!/[01]/.test(command)) return await conn.relayMessage(msg.key.remoteJid, msg.message, {
   messageId: msg.key.id
-}) */
-conn.relayMessage(m.chat,  {
+})
+/*conn.relayMessage(m.chat,  {
     requestPaymentMessage: {
       currencyCodeIso4217: 'IDR',
       amount1000: 25000000,
@@ -390,7 +409,7 @@ conn.relayMessage(m.chat,  {
       contextInfo: {
       externalAdReply: {
       showAdAttribution: false
-      }}}}}}, {})
+      }}}}}}, {})*/
           throw false
   }
   let status = `╭───═[ *OPTIONS* ]
